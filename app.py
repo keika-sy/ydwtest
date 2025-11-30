@@ -6,6 +6,15 @@ import os
 import shutil
 from pathlib import Path
 
+# Inisialisasi dengan async_mode
+socketio = SocketIO(
+    app, 
+    cors_allowed_origins="*", 
+    async_mode='eventlet',  # Penting!
+    logger=True,  # Optional: untuk debug
+    engineio_logger=True
+)
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your-secret-key-change-in-production'
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet')
